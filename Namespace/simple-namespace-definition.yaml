@@ -1,0 +1,11 @@
+# This Namespace definition file is very simple, create namespace finance with team details in labels.  
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finance
+  labels:
+    Environment: production
+    Team: finance
+    Cost_Center: "12345"
+    Contact: boopathi-at-git.com
