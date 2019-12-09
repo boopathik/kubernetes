@@ -1,0 +1,21 @@
+# This pod definition file hosts 2 containers in the same pod, nginx server and redis in-memory cache db. These kind of pods are complex and
+# not commonly used. Containers section is an array and you can add multiple images/apps. 
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-redis-app
+  labels:
+    app: nginx-redis-app
+    tier: front-end-in-mem-cache-db
+
+spec:
+  containers:
+    - name: nginx-server
+      image: nginx
+      
+    - name: redis-db
+      image: redis
+      
