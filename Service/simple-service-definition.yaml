@@ -6,7 +6,7 @@ apiVersion: v1
 kind: Service
 
 metadata:
-  name: ngnix-server
+  name: nginx-server
   namespace: bk01
   labels:
     app: nginx-server
