@@ -1,0 +1,32 @@
+# This ReplicaSet definition hosts simple nginx-server container in 3 pods. replicas define number of pods run at the same time. you can scale
+# pods at any given time using scale command or editing the ReplicaSet.
+
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+  namespace: finance
+  name: nginx-server
+  labels:
+    app: nginx-server
+    team: finance
+    tier: frontend
+
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx
+
+    metadata:
+      name: nginx-server
+      labels:
+        app: nginx-server
+        tier: frontend
+  selector:
+    matchLabels:
+      app: nginx-server
+      tier: frontend
