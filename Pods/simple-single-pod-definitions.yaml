@@ -1,0 +1,17 @@
+# This pod definition is simple one, uses nginx image from default docker repository. Hosts only single container pod.
+#Bsic Skeleton of Pod yaml file contains apiVersion, kind, metadata and spec sections.
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-server
+  labels:
+    app: nginx-server
+    tier: front-end
+
+spec:
+  containers:
+    - name: nginx-server
+      image: nginx
