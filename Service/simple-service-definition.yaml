@@ -1,0 +1,26 @@
+#Simple service definition file helps you to expose your pods using NodePort ip. you can use curl -X GET http://node-ip:nodePort 
+#to access your application.  
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: ngnix-server
+  namespace: bk01
+  labels:
+    app: nginx-server
+    tier: frontend
+    version: v1
+    team: finance
+
+spec:
+  selector:
+    app: nginx-server
+    tier: frontend
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+
