@@ -1,0 +1,32 @@
+#Simple Deployment definition creates 4 replicas of same pod. In deployment definition, the metadata labels has to match with selector labels 
+# in the spc section not with deployment metadata labels.
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: nginx-server
+  namespace: finance
+  labels:
+    app: nginx-server
+    tier: frontend
+    version: v1
+    team: finance
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx-server
+      tier: front-end
+  template:
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx
+
+    metadata:
+      labels:
+        app: nginx-server
+        tier: front-end
