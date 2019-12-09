@@ -1,0 +1,21 @@
+# This pod definition hosts nginx server pod in the specified namespace. It's always good to deploy the pods in the specific namespace for grouping
+# and proper managements. 
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-server
+  namespace: finance
+  labels:
+    app: nginx-server
+    tier: frontend
+    team: finance
+    environment: production
+    contact: boopathi-at-git.com
+
+spec:
+  containers:
+    - name: nginx-server
+      image: nginx
