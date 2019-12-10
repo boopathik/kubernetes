@@ -1,0 +1,23 @@
+#Simple DaemonSet definition to collect system performance details
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: collectd
+  labels:
+    app: collectd
+    tier: logging
+    type: daemon-set
+
+spec:
+  template:
+    spec:
+      containers:
+        - name: collectd
+          image: puckel/docker-collectd
+    metadata:
+      labels:
+        app: collectd
+  selector:
+    matchLabels:
+      app: collectd
