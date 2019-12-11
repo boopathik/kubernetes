@@ -1,0 +1,15 @@
+# Simple pod ResourceQuota for namespace.
+
+apiVersion: v1
+
+kind: ResourceQuota
+
+metadata:
+  namespace: finance
+  name: finance
+  labels:
+    team: finance
+
+spec:
+  hard:
+    pods: "20"
