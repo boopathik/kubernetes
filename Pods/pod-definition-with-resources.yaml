@@ -1,0 +1,25 @@
+#Simple Pod definition with resources defined 
+# For more info https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  namespace: finance
+  name: nginx-server
+  labels:
+    app: nginx-server
+    tier: fronend
+
+spec:
+  containers:
+    - image: nginx
+      name: nginx-serves
+      resources:
+        requests:
+          cpu: 0.1
+          memory: "64Mi"
+        limits:
+          cpu: 0.2
+          memory: "256Mi"
