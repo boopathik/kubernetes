@@ -1,0 +1,21 @@
+#Simple pod definition with Environment variables
+# login to pod "kubectl exec -it <POD-NAME> /bin/bash" and type "env" to get the list of environment variables.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: finance
+  name: my-env-pod
+  labels:
+    app: my-env-pod
+    team: finance
+
+spec:
+  containers:
+    - name: my-env-pod
+      image: nginx
+      env:
+        - name: Name
+          value: "Boopathi K"
+        - name: Country
+          value: "India"
