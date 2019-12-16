@@ -1,0 +1,32 @@
+#Simple ConfigMap holding a file details in single variable. This ConfigMap can be mounted as volume and the variable name becomes file name
+#and the value becomes content. This kind of mounting will be helpful in case of passing dynamic content as file to applications.  
+# This Config Map is used for Nginx server index file. refer pod-definition : dynamic-nginx-server-index-page.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index-page
+  labels:
+    app: nginx-server
+
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+    </head>
+    <body>
+    <h1>Welcome to nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and the file is loaded from
+    configMap using the Volume Options.</p>
+    <p><em>Thank you for using nginx.</em></p>
+    </body>
+    </html>
