@@ -1,0 +1,14 @@
+#Simple ConfigMap definition holds 2 simple variaibles details.
+
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  namespace: bk01
+  name: app-config
+  labels:
+    team: finance
+
+data:
+  pythonPath: "/usr/local/bin"
+  aws_CLI: "/usr/bin"
