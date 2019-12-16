@@ -1,0 +1,22 @@
+#This pod definition file uses ConfigMaps defined in ConfigMap/nginx-server-index-page-cm-def.yaml and load the index.html from Volumes.
+# Login to Pod using 'kubectl exec -it dynamic-nginx-server /bin/bash' and run 'ls /usr/share/nginx/html/' to see the index file from ConfigMap
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: finance
+  name: dynamic-nginx-server
+  labels:
+    app: dynamic-nginx-server
+    team: finance
+
+spec:
+  containers:
+    - name: dynamic-nginx-server
+      image: nginx
+      volumeMounts:
+        - name: index-file
+          mountPath: /usr/share/nginx/html/
+  volumes:
+    - name: index-file
+      configMap:
+        name: nginx-index-page
