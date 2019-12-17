@@ -1,0 +1,26 @@
+#This pod definition host nginx server and mount the volume from the host machine. This is not recommended for multi-node & production cluster. 
+# I have defined the nodeName where the pod should get hosted.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: finance
+  name: nginx-server-use-host-volume
+  labels:
+    app: nginx-server
+    team: finance
+
+spec:
+  containers:
+    - name: nginx-server
+      image: nginx
+      volumeMounts:
+        - name: host-path
+          mountPath: /usr/share/nginx/html
+
+  volumes:
+    - name: host-path
+      hostPath:
+        path: /tmp/nginx
+        type: Directory
+  nodeName: node01
