@@ -1,0 +1,19 @@
+# This PVC checks for storageClassName: small and matching labels in persistentVolume
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-small
+  labels:
+    type: local-host-volume
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Mi
+  storageClassName: small
+  selector:
+    matchLabels:
+      size: 200-Mi
