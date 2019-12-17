@@ -1,0 +1,19 @@
+#This persistentVolume def create 10Gi mount from the local node. Not recommended to use for production purpose.
+# List of allowed accessModes are defined here. matching PVC with bound this volume and storage class is dynamic here. 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-large
+  labels:
+    type: local-host-volume
+    size: 10-Gi
+
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+  hostPath:
+    path: /tmp/mnt2
