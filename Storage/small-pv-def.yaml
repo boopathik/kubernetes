@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-small
+  labels:
+    type: local-host-volume
+    size: 200-Mi
+
+spec:
+  storageClassName: small
+  capacity:
+    storage: 200Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/mnt
