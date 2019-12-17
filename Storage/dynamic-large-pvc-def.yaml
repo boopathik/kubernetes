@@ -1,0 +1,15 @@
+# This PVC checks for available PV and bound with matching PV
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-large
+  labels:
+    type: local-host-volume
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
